@@ -9,13 +9,12 @@
 typedef struct HashMap HashMap;
 int enlarge_called=0;
 
-type struct 
-{
+struct HashMap{  
     Pair ** buckets;
     long size; //cantidad de datos/pairs en la tabla
     long capacity; //capacidad de la tabla
     long current; //indice del ultimo dato accedido
-} HashMap;
+};
 
 Pair * createPair( char * key,  void * value) {
     Pair * new = (Pair *)malloc(sizeof(Pair));
@@ -42,14 +41,24 @@ int is_equal(void* key1, void* key2){
 
 void insertMap(HashMap * map, char * key, void * value) 
 {
-    HashMap * mapa = (HashMap *)map;
-
+    long buscar = hash(key, map->capacity);
     
-
-
-
-
-
+    while (map->buckets[buscar] != NULL && map->buckets[buscar]->key != NULL)
+    {
+        if (is_equal(map->buckets[buscar]->key, key))
+        {
+            return;
+        }
+        buscar = (buscar + 1) % map->capacity;
+        if (buscar == hash(key, map->capacity)) 
+        {
+            return;
+        }
+    }
+    
+    map->buckets[buscar] = createPair(key, value);
+    map->size++;
+    map->current = buscar;
 }
 
 void enlarge(HashMap * map) {
