@@ -106,18 +106,14 @@ Pair * searchMap(HashMap * map,  char * key)
             return map->buckets[buscar];
         }
         buscar = (buscar + 1) % map->capacity;
-        {
+        
         
         if (buscar == hash(key, map->capacity)) 
         {
             break;
         }
 
-    
-    return NULL;
     }
-
-
 
     return NULL;
 }
@@ -126,7 +122,8 @@ Pair * firstMap(HashMap * map)
 {
     if (map->size == 0) return NULL;
     
-    for (int i = 0; i < map->capacity; i++) {
+    for (int i = 0; i < map->capacity; i++) 
+    {
         if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) 
         {
             map->current = i;
