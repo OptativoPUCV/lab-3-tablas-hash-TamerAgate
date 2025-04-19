@@ -94,7 +94,9 @@ void eraseMap(HashMap * map,  char * key)
 
 }
 
-Pair * searchMap(HashMap * map,  char * key) {   
+Pair * searchMap(HashMap * map,  char * key) 
+{   
+
 
 
     return NULL;
