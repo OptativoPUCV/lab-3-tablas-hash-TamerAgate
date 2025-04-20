@@ -123,8 +123,9 @@ void eraseMap(HashMap * map,  char * key)
     {
         if (map->buckets[buscar]->key != NULL && is_equal(map->buckets[buscar]->key, key)) 
         {
-            map->current = buscar;
-            return map->buckets[buscar];
+            map->buckets[buscar]->key = NULL;
+            map->size--;
+            return;
         }
         buscar = (buscar + 1) % map->capacity;
         
