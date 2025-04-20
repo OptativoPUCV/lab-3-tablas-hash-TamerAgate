@@ -711,3 +711,17 @@ do., 20 de abr. de 2025 19:06:03:
  tests:  14|1
 total_score: 60/70
 975e928
+do., 20 de abr. de 2025 19:07:57: 
+ hashmap.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+Compilation failed
+In file included from test.c:4:0:
+hashmap.c: In function 'eraseMap':
+hashmap.c:127:32: error: 'return' with a value, in function returning void [-Werror]
+             return map->buckets[buscar];
+                    ~~~~~~~~~~~~^~~~~~~~
+hashmap.c:118:6: note: declared here
+ void eraseMap(HashMap * map,  char * key)
+      ^~~~~~~~
+cc1.exe: all warnings being treated as errors
+88b0167

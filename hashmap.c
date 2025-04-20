@@ -117,6 +117,24 @@ HashMap * createMap(long capacity)
 
 void eraseMap(HashMap * map,  char * key)
 {    
+    long buscar = hash(key, map->capacity);
+
+    while (map->buckets[buscar] != NULL)
+    {
+        if (map->buckets[buscar]->key != NULL && is_equal(map->buckets[buscar]->key, key)) 
+        {
+            map->current = buscar;
+            return map->buckets[buscar];
+        }
+        buscar = (buscar + 1) % map->capacity;
+        
+        
+        if (buscar == hash(key, map->capacity)) 
+        {
+            break;
+        }
+
+    }
 
 
 }
