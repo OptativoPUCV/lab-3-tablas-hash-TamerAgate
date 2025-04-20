@@ -731,3 +731,9 @@ do., 20 de abr. de 2025 19:08:58:
  tests:  17|0
 total_score: 70/70
 8230ca4
+do., 20 de abr. de 2025 19:23:21: 
+ hashmap.c | 27 ++++++++++++---------------
+ 1 file changed, 12 insertions(+), 15 deletions(-)
+ tests:  17|0
+total_score: 70/70
+ac375ea
