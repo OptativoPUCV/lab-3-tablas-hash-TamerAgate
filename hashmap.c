@@ -61,7 +61,34 @@ void insertMap(HashMap * map, char * key, void * value)
     map->current = buscar;
 }
 
-void enlarge(HashMap * map) {
+void enlarge(HashMap * map) 
+{
+    long nuevaCapacidad = map->capacity * 2;
+    HashMap * nuevoMapa = createMap(nuevaCapacidad);
+
+    if (nuevoMapa == NULL) return;
+
+    for (int i = 0; i < map->capacity; i++) 
+    {
+        if (map->buckets[i] != NULL && map->buckets[i]->key != NULL) 
+        {
+            insertMap(nuevoMapa, map->buckets[i]->key, map->buckets[i]->value);
+        }
+    }
+
+    for (int i = 0; i < map->capacity; i++) 
+    {
+        if (map->buckets[i] != NULL) 
+        {
+            free(map->buckets[i]);
+        }
+    }
+
+    map->buckets = nuevoMapa->buckets;
+    map->capacity = nuevaCapacidad;
+    map->size = nuevoMapa->size;
+
+
     enlarge_called = 1; //no borrar (testing purposes)
 
 
